@@ -15,18 +15,21 @@
         }
         return $conn;
     }
+
     function closeConnection($conn){
         $conn->close();
     }
+
     function setData($isText,$reply,$text=""){
+
         if($isText == 1){
             $messages = [
                 'type' => 'text',
                 'text' => $text
             ];
         }else{
-            $imageUrl = 'https://still-beyond-73841.herokuapp.com/bnk48_3.jpg';
-            $imageMiniUrl = 'https://still-beyond-73841.herokuapp.com/rsz_1bnk48_3.jpg';
+            $imageUrl = 'https://serene-lowlands-99058.herokuapp.com/jan.jpg';
+            $imageMiniUrl = 'https://serene-lowlands-99058.herokuapp.com/jan.jpg';
             $messages = [
                 'type' => 'image',
                 'originalContentUrl' => $imageUrl,
@@ -38,8 +41,10 @@
             'replyToken' => $reply,
             'messages' => [$messages],
          ];
+
         return $data;
     }
+
     function sendMessage($data,$access_token){
         $url = 'https://api.line.me/v2/bot/message/reply';
         $post = json_encode($data);
