@@ -11,7 +11,7 @@
 
     $knId = $_GET['id'];
 
-    $sql = "DELETE FROM `heroku_da1dc32cdc85254`.`knowledge` WHERE knId = $knId";
+    $sql = "DELETE FROM `heroku_cc65da134c5a8d1`.`knowledge` WHERE knId = $knId";
     $conn->query($sql);
 
     header('Location: '."insert.php");
