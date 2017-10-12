@@ -79,7 +79,7 @@ if (!is_null($events['events'])) {
 					'ans' => 'GO HOME VERY GOOD'
 				],
 				15 => [
-					'keywords' => 'ไหม',
+					'keywords' => 'ได้ไหม',
 					'ans' => 'ช้อนขอไม่ตอบได้ป่ะ'
 				]
 				
