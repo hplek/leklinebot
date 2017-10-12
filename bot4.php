@@ -17,17 +17,17 @@
     
                     $key = $temp[0];
                     $ans = $temp[1];
-                    $sql = "INSERT INTO `heroku_da1dc32cdc85254`.`knowledge`(`key`,`ans`) VALUES ('$key','$ans')";
+                    $sql = "INSERT INTO `heroku_cc65da134c5a8d1`.`knowledge`(`key`,`ans`) VALUES ('$key','$ans')";
     
                     $conn->query($sql);
-                    $text = 'ช้อนรู้แล้ว ช้อนไม่ได้แก่แบบเช่นะที่จะจำไม่ได้อ่ะ';
+                    $text = 'ช้อนรู้แล้ว ช้อนไม่ได้แก่แบบเช่นะที่จะจำไม่ได้อะ';
                     $data = setData(1,$event['replyToken'],$text);
                     sendMessage($data,$access_token);
                 }else if(strcmp($event['message']['text'],"รายชื่อ") == false){
                     $data = setData(0,$event['replyToken']);
                     sendMessage($data,$access_token);
                 }else{
-                    $sql_select = "select * from heroku_da1dc32cdc85254.knowledge";
+                    $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
                     if ($result = $conn->query($sql_select)) {
                         
                             while ($obj = $result->fetch_object()) {
