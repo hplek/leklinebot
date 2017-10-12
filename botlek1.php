@@ -1,58 +1,45 @@
 <?php
-    function getConnection(){
-        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        
-        $server = $url["host"];
-        $username = $url["user"];
-        $password = $url["pass"];
-        $db = substr($url["path"], 1);
-        
-        
-        if($conn = new mysqli($server, $username, $password, $db)){
-            echo true;
-        }else{
-            echo false;
+    include_once "./bot4fn.php";
+    $conn = getConnection();
+    $access_token = 'HdFb3n2OGmwyqNijVDMdTj3S952Mo/MfWtdMC5qieGmgwweN6uBq+d6wTLV14P9A9MYU4dGgViJ00h72pBTWQFkffLasm3LStlW/bLnoiq6eeBmgq0shYh7zQuDd5WvpbAd/HYUluriGFOZXQ57+gwdB04t89/1O/w1cDnyilFU=';
+    $content = file_get_contents('php://input');
+    $events = json_decode($content, true);
+    if (!is_null($events['events'])) {
+        foreach ($events['events'] as $event) {
+            if($event['type'] == 'message' && $event['message']['type'] == 'text' ){
+                if(strpos($event['message']['text'],"#?") !== false ){
+                    $temp = $event['message']['text'];
+                    $temp = explode('#?',$temp);
+    
+                    $key = $temp[0];
+                    $ans = $temp[1];
+                    $sql = "INSERT INTO `heroku_da1dc32cdc85254`.`knowledge`(`key`,`ans`) VALUES ('$key','$ans')";
+    
+                    $conn->query($sql);
+                    $text = 'ช้อนจำได้แล้ว ช้อนยังเด็ก ความจำดีกว่าเช่เย้ออออ';
+                    $data = setData(1,$event['replyToken'],$text);
+                    sendMessage($data,$access_token);
+                }else if(strcmp($event['message']['text'],"รายชื่อ") == false){
+                    $data = setData(0,$event['replyToken']);
+                    sendMessage($data,$access_token);
+                }else{
+                    $sql_select = "select * from heroku_da1dc32cdc85254.knowledge";
+                    if ($result = $conn->query($sql_select)) {
+                        
+                            while ($obj = $result->fetch_object()) {
+                                if( strpos($event['message']['text'],$obj->key) !== false ){
+                                    $text = $obj->ans;
+                                    break;
+                                }
+                            }
+                            $result->close();
+                    }
+                    $data = setData(1,$event['replyToken'],$text);
+                    sendMessage($data,$access_token);
+                }
+            }
         }
-        return $conn;
     }
-    function closeConnection($conn){
-        $conn->close();
-    }
-    function setData($isText,$reply,$text=""){
-        if($isText == 1){
-            $messages = [
-                'type' => 'text',
-                'text' => $text
-            ];
-        }else{
-            $imageUrl = 'https://serene-lowlands-99058.herokuapp.com/jan.jpg';
-            $imageMiniUrl = 'https://serene-lowlands-99058.herokuapp.com/jan.jpg';
-            $messages = [
-                'type' => 'image',
-                'originalContentUrl' => $imageUrl,
-                'previewImageUrl' => $imageMiniUrl
-            ];
-        }
-        $replyToken = $event['replyToken'];
-        $data = [
-            'replyToken' => $reply,
-            'messages' => [$messages],
-         ];
-        return $data;
-    }
-    function sendMessage($data,$access_token){
-        $url = 'https://api.line.me/v2/bot/message/reply';
-        $post = json_encode($data);
-        $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
         
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        echo $result . "\r\n";
-    }
+    closeConnection($conn);
 ?>
