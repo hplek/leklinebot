@@ -23,7 +23,7 @@
   
     
     
-    $sql_select = "select * from heroku_da1dc32cdc85254.knowledge";
+    $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
     if ($result = $conn->query($sql_select)) {
         echo '<table class="table-bordered">';
         echo '<thead>';
@@ -39,7 +39,7 @@
         $result->close();
     }
 
-    $sql = "SELECT * FROM `heroku_da1dc32cdc85254`.`status` WHERE staId = 1";
+    $sql = "SELECT * FROM `heroku_cc65da134c5a8d1`.`status` WHERE staId = 1";
     if ($result = $conn->query($sql)) {
         
             while ($obj = $result->fetch_object()) {
