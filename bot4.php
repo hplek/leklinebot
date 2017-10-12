@@ -16,7 +16,7 @@
                     $sql = "INSERT INTO `heroku_da1dc32cdc85254`.`knowledge`(`key`,`ans`) VALUES ('$key','$ans')";
     
                     $conn->query($sql);
-                    $text = 'ช้อนจำได้แล้ว ช้อนยังเด็ก ความจำดีกว่าเช่เย้ออออ';
+                    $text = 'ช้อนรู้แล้ว ช้อนไม่ได้แก่แบบเช่นะที่จะจำไม่ได้อ่ะ';
                     $data = setData(1,$event['replyToken'],$text);
                     sendMessage($data,$access_token);
                 }else if(strcmp($event['message']['text'],"รายชื่อ") == false){
