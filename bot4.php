@@ -30,7 +30,7 @@
                     sendMessage($data,$access_token);
 
                 }
-                else if(strcmp($event['message']['text'],"ควีนแก้ว") == false)
+                else if(strcmp($event['message']['text'],"member") == false)
                 {
 
                     $data = setData(0,$event['replyToken']);
