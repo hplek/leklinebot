@@ -31,6 +31,8 @@
 
     function addAnswer($key, $ans)
     {
+        global $dbtable;
+
         $conn = getConnection();
 
         $sql = "INSERT INTO " . $dbtable . " (`key`,`ans`) VALUES ('$key','$ans')";
@@ -42,9 +44,11 @@
 
     function deleteAnswer($Id)
     {
+        global $dbtable;
+
         $conn = getConnection();
 
-        $sql = "DELETE FROM $dbtable WHERE Id = $Id";
+        $sql = "DELETE FROM " . $dbtable . " WHERE Id = $Id";
         $conn->query($sql);
         $conn->close();
 
@@ -58,9 +62,6 @@
         $conn = getConnection();
 
         $sql_select = "select * from " . $dbtable;
-
-        echo "TEST REPLY";
-        echo $sql_select;
 
         $result = $conn->query($sql_select);
 
