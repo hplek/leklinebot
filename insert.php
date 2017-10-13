@@ -13,13 +13,14 @@
 
 <?php 
 
-    include "./bot4fn.php";
+    include "./functions.php";
 
-    $conn = getConnection();
+    //$conn = getConnection();
 
-    $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
+    //$sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
 
-    if ($result = $conn->query($sql_select)) {
+    if ($result = getReplyMessages()) {
+
         echo '<table class="table-bordered">';
         echo '<thead>';
         echo '<tr> <th>Delete</th> <th>Keywords</th> <th>Answers</th> </tr>';
@@ -31,7 +32,9 @@
                 echo '</tr>';
             }
         echo '</tbody></table>';
+
         $result->close();
+        
     }
 
 ?>

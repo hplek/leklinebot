@@ -36,6 +36,8 @@
 
         $conn->query($sql);
 
+        closeConnection($conn)
+
     }
 
     function deleteAnswer()
@@ -44,6 +46,8 @@
 
         $sql = "DELETE FROM " . $dbtable . " WHERE Id = $Id";
         $conn->query($sql);
+
+        closeConnection($conn)
 
     }
 
