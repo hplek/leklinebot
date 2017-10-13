@@ -4,6 +4,8 @@
 
     $conn = getConnection();
     
+    echo $dbtable;
+
     printf("Initial character set: %s\n", $conn->character_set_name());
 
     /* change character set to utf8 */
