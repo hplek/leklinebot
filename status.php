@@ -1,6 +1,6 @@
 <?php
 
-    include_once "./bot4fn.php";
+    include_once "./functions.php";
 
     $conn = getConnection();
     
