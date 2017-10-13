@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv=Content-Type content="text/html; charset=utf-8">
         <title>Bot Management</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -13,14 +13,9 @@
 
 <?php 
 
-    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
-    
-    $conn = new mysqli($server, $username, $password, $db);
+    include_once "./bot4fn.php";
+
+    $conn = getConnection();
 
     $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
 
