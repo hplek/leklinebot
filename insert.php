@@ -17,12 +17,8 @@
     $password = $url["pass"];
     $db = substr($url["path"], 1);
     
-    
     $conn = new mysqli($server, $username, $password, $db);
 
-  
-    
-    
     $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
     if ($result = $conn->query($sql_select)) {
         echo '<table class="table-bordered">';
