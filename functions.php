@@ -39,7 +39,7 @@
 
     }
 
-    function deleteAnswer()
+    function deleteAnswer($Id)
     {
         $conn = getConnection();
 
