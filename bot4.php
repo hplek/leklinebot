@@ -23,7 +23,7 @@
                     $key = $temp[0];
                     $ans = $temp[1];
 
-                    addAnswer($key, $ans)
+                    addAnswer($key, $ans);
 
                     $text = 'ช้อนรู้แล้ว ช้อนไม่ได้แก่แบบเช่นะที่จะจำไม่ได้อะ';
                     $data = setData(1,$event['replyToken'],$text);
