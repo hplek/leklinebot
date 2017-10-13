@@ -43,7 +43,7 @@
     {
         $conn = getConnection();
 
-        $sql = "DELETE FROM " . $dbtable . " WHERE Id = $Id";
+        $sql = "DELETE FROM $dbtable WHERE Id = $Id";
         $conn->query($sql);
         $conn->close();
 
@@ -54,7 +54,7 @@
 
         $conn = getConnection();
 
-        $sql_select = "select * from `heroku_cc65da134c5a8d1`.`knowledge`";
+        $sql_select = "select * from $dbtable";
 
         $result = $conn->query($sql_select);
 
