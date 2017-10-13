@@ -10,10 +10,9 @@
         $password = $url["pass"];
         $db = substr($url["path"], 1);
         
-        if($conn = new mysqli($server, $username, $password, $db)){
-            echo true;
-        }else{
-            echo false;
+        if(!$conn = new mysqli($server, $username, $password, $db))
+        {
+            printf($conn->error);
         }
 
         $conn->set_charset("utf8");
