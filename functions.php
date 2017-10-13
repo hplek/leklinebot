@@ -1,5 +1,7 @@
 <?php
 
+    $dbtable = "`heroku_cc65da134c5a8d1`.`knowledge`";
+
     function getConnection()
     {
 
@@ -21,11 +23,45 @@
 
     }
 
-    function closeConnection($conn){
+    function closeConnection($conn)
+    {
         $conn->close();
     }
 
-    function setData($isText,$reply,$text=""){
+    function addAnswer($key, $ans)
+    {
+        $conn = getConnection();
+
+        $sql = "INSERT INTO " . $dbtable . " (`key`,`ans`) VALUES ('$key','$ans')";
+
+        $conn->query($sql);
+
+    }
+
+    function deleteAnswer()
+    {
+        $conn = getConnection();
+
+        $sql = "DELETE FROM " . $dbtable . " WHERE Id = $Id";
+        $conn->query($sql);
+
+    }
+
+    function getReplyMessages()
+    {
+
+        $conn = getConnection();
+
+        $sql_select = "select * from " . $dbtable;
+
+        $result = $conn->query($sql_select);
+
+        return $result;
+
+    }
+
+    function setData($isText, $reply, $text = "")
+    {
 
         if($isText == 1){
             $messages = [
@@ -50,7 +86,8 @@
         return $data;
     }
 
-    function sendMessage($data,$access_token){
+    function sendMessage($data, $access_token){
+
         $url = 'https://api.line.me/v2/bot/message/reply';
         $post = json_encode($data);
         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -63,6 +100,8 @@
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         $result = curl_exec($ch);
         curl_close($ch);
+
         echo $result . "\r\n";
     }
+
 ?>

@@ -13,7 +13,7 @@
 
 <?php 
 
-    include_once "./bot4fn.php";
+    include "./bot4fn.php";
 
     $conn = getConnection();
 

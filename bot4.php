@@ -1,6 +1,6 @@
 <?php
     
-    include_once "./bot4fn.php";
+    include "./functions.php";
 
     $conn = getConnection();
 
@@ -10,22 +10,27 @@
     $events = json_decode($content, true);
 
     if (!is_null($events['events'])) {
+
         foreach ($events['events'] as $event) {
+
             if($event['type'] == 'message' && $event['message']['type'] == 'text' ){
+
                 if(strpos($event['message']['text'],"#?") !== false ){
+
                     $temp = $event['message']['text'];
                     $temp = explode('#?',$temp);
-    
+
                     $key = $temp[0];
                     $ans = $temp[1];
-                    $sql = "INSERT INTO `heroku_cc65da134c5a8d1`.`knowledge`(`key`,`ans`) VALUES ('$key','$ans')";
-    
-                    $conn->query($sql);
+
+                    addAnswer($key, $ans)
+
                     $text = 'ช้อนรู้แล้ว ช้อนไม่ได้แก่แบบเช่นะที่จะจำไม่ได้อะ';
                     $data = setData(1,$event['replyToken'],$text);
                     sendMessage($data,$access_token);
 
-                }else if(strcmp($event['message']['text'],"รายชื่อ") == false)
+                }
+                else if(strcmp($event['message']['text'],"รายชื่อ") == false)
                 {
 
                     $data = setData(0,$event['replyToken']);
@@ -33,8 +38,8 @@
                 }
                 else
                 {
-                    $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
-                    if ($result = $conn->query($sql_select)) {
+
+                    if ($result = getReplyMessages()) {
                         
                             while ($obj = $result->fetch_object()) {
                                 if( strpos($event['message']['text'],$obj->key) !== false ){
@@ -44,6 +49,7 @@
                             }
                             $result->close();
                     }
+
                     $data = setData(1,$event['replyToken'],$text);
                     sendMessage($data,$access_token);
                 }
@@ -51,6 +57,6 @@
         }
     }
         
-
     closeConnection($conn);
+
 ?>
