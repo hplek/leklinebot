@@ -6,7 +6,7 @@
 
     $Id = $_GET['id'];
 
-    deleteAnswer($Id)
+    deleteAnswer($Id);
 
     header('Location: '."insert.php");
 
