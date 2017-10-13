@@ -1,5 +1,6 @@
 <?php
 
+
     $dbtable = "`heroku_cc65da134c5a8d1`.`knowledge`";
 
     function getConnection()
@@ -51,6 +52,8 @@
 
     function getReplyMessages()
     {
+
+        global $dbtable;
 
         $conn = getConnection();
 
