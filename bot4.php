@@ -59,4 +59,6 @@
         
     closeConnection($conn);
 
+    echo "Bot OK";
+
 ?>

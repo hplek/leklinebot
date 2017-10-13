@@ -54,7 +54,8 @@
 
         $conn = getConnection();
 
-        $sql_select = "select * from $dbtable";
+        $sql_select = "select * from " + $dbtable;
+        
         echo $sql_select;
         $result = $conn->query($sql_select);
 
