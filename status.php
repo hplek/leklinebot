@@ -6,8 +6,10 @@
     
     echo "BOT TEST STATUS<br />";
 
-    echo $dbtable;
+    echo "select * from " . $dbtable;
 
+    echo "<br />";
+    
     printf("Initial character set: %s\n", $conn->character_set_name());
 
     /* change character set to utf8 */
