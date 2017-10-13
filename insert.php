@@ -31,7 +31,7 @@
         echo '</thead><tbody>';
             while ($obj = $result->fetch_object()) {
                 echo '<tr>';
-                    echo '<td><a href="delete.php?id='.$obj->knId.'" role="button" class="btn btn-danger">del</a></td>';
+                    echo '<td><a href="delete.php?id='.$obj->Id.'" role="button" class="btn btn-danger">del</a></td>';
                     echo '<td>'.$obj->key.'</td><td>'.$obj->ans."</td>";
                 echo '</tr>';
             }

@@ -1,18 +1,14 @@
 <?php
-    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
-    
-    
-    $conn = new mysqli($server, $username, $password, $db);
+    include_once "./bot4fn.php";
 
-    $knId = $_GET['id'];
+    $conn = getConnection();
 
-    $sql = "DELETE FROM `heroku_cc65da134c5a8d1`.`knowledge` WHERE knId = $knId";
+    $Id = $_GET['id'];
+
+    $sql = "DELETE FROM `heroku_cc65da134c5a8d1`.`knowledge` WHERE Id = $Id";
     $conn->query($sql);
 
     header('Location: '."insert.php");
+
 ?>
