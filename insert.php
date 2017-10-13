@@ -1,15 +1,18 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <<title>Bot Management</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </head>
-    <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: red;">
-        <a class="navbar-brand pull-middle" href="#"><strong>Manage Bot Data</strong></a>
-    </nav>
-    </body>
-</html>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: red;">
+    <a class="navbar-brand pull-middle" href="#"><strong>Manage Bot Data</strong></a>
+</nav>
+
 <?php 
+
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     
     $server = $url["host"];
@@ -20,6 +23,7 @@
     $conn = new mysqli($server, $username, $password, $db);
 
     $sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
+
     if ($result = $conn->query($sql_select)) {
         echo '<table class="table-bordered">';
         echo '<thead>';
@@ -46,3 +50,5 @@
     }
     
 ?>
+</body>
+</html>
