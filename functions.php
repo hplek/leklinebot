@@ -35,8 +35,7 @@
         $sql = "INSERT INTO " . $dbtable . " (`key`,`ans`) VALUES ('$key','$ans')";
 
         $conn->query($sql);
-
-        closeConnection($conn)
+        $conn->close();
 
     }
 
@@ -46,8 +45,7 @@
 
         $sql = "DELETE FROM " . $dbtable . " WHERE Id = $Id";
         $conn->query($sql);
-
-        closeConnection($conn)
+        $conn->close();
 
     }
 
@@ -56,7 +54,7 @@
 
         $conn = getConnection();
 
-        $sql_select = "select * from " . $dbtable;
+        $sql_select = "select * from `heroku_cc65da134c5a8d1`.`knowledge`";
 
         $result = $conn->query($sql_select);
 
