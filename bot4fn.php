@@ -1,5 +1,8 @@
 <?php
-    function getConnection(){
+
+    function getConnection()
+    {
+
         $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
         
         $server = $url["host"];
@@ -13,7 +16,9 @@
         }else{
             echo false;
         }
+        
         return $conn;
+
     }
 
     function closeConnection($conn){
