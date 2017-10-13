@@ -4,6 +4,8 @@
 
     $conn = getConnection();
     
+    echo "BOT TEST STATUS<br />";
+
     echo $dbtable;
 
     printf("Initial character set: %s\n", $conn->character_set_name());
