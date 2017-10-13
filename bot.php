@@ -85,7 +85,7 @@ if (!is_null($events['events'])) {
 				16 => [
 					'keywords' => 'ทำไม',
 					'ans' => 'นี่ก็ขี้สงสัยจัง'
-				
+				]
 			];
 			$found = 0;
 			if($join == 0){
