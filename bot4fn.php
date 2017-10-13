@@ -16,7 +16,9 @@
         }else{
             echo false;
         }
-        
+
+        $conn->set_charset("utf8");
+
         return $conn;
 
     }
