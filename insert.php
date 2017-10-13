@@ -15,10 +15,6 @@
 
     include "./functions.php";
 
-    //$conn = getConnection();
-
-    //$sql_select = "select * from heroku_cc65da134c5a8d1.knowledge";
-
     if ($result = getReplyMessages()) {
 
         echo '<table class="table-bordered">';
@@ -34,7 +30,7 @@
         echo '</tbody></table>';
 
         $result->close();
-        
+
     }
 
 ?>
