@@ -81,12 +81,14 @@ if (!is_null($events['events'])) {
 				15 => [
 					'keywords' => 'ได้ไหม',
 					'ans' => 'ช้อนขอไม่ตอบได้ป่ะ'
-				]
+				],
 				16 => [
 					'keywords' => 'ทำไม',
 					'ans' => 'นี่ก็ขี้สงสัยจัง'
 				]
+				
 			];
+			
 			$found = 0;
 			if($join == 0){
 				foreach ( $question as $row ){
