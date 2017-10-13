@@ -79,7 +79,7 @@
             ];
         }else{
             $imageUrl = 'https://serene-lowlands-99058.herokuapp.com/member.jpg';
-            $imageMiniUrl = 'https://serene-lowlands-99058.herokuapp.com/member.jpg';
+            $imageMiniUrl = 'https://serene-lowlands-99058.herokuapp.com/membermini.jpg';
             $messages = [
                 'type' => 'image',
                 'originalContentUrl' => $imageUrl,
