@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <<title>Bot Management</title>
+        <title>Bot Management</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </head>
@@ -39,16 +39,6 @@
         $result->close();
     }
 
-    $sql = "SELECT * FROM `heroku_cc65da134c5a8d1`.`status` WHERE staId = 1";
-    if ($result = $conn->query($sql)) {
-        
-            while ($obj = $result->fetch_object()) {
-                echo $obj->sta;
-            }
-        
-            $result->close();
-    }
-    
 ?>
 </body>
 </html>
